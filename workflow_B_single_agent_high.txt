@@ -1,0 +1,13 @@
+Workflow B: Strong single-agent baseline - Sol high
+
+Use one fixed reasoning level. This configuration uses high.
+
+                  Task
+                   |
+                   v
+           GPT-6.1 Sol - high
+          Investigate + implement
+          + verify using tools
+                   |
+                   v
+               Deliverable
