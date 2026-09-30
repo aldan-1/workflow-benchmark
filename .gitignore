@@ -1,0 +1,22 @@
+# Credentials and local settings
+.env
+.env.*
+!.env.example
+
+# Generated benchmark outputs
+results/*
+!results/.gitkeep
+
+# Local execution environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+
+# OS files
+Thumbs.db
+.DS_Store
