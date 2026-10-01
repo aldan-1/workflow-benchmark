@@ -1,0 +1,35 @@
+Workflow C: Multi-agent workflow - delegation on demand
+
+Select only needed workers. Dependent work runs sequentially.
+
+                         Task
+                          |
+                          v
+                 GPT-6.1 Sol - medium
+                  Understand + route
+                          |
+              Is delegation useful?
+                 /              \
+               No                Yes
+                |                 |
+                v                 v
+          Sol executes     Select needed workers
+                |                 |
+                |       +---------+---------+
+                |       |         |         |
+                |       v         v         v
+                |   Research    Coding   Lightweight
+                |   DeepSeek    DeepSeek  GPT-6 Luna
+                |   V4.1 Flash  V4.1 Flash    low
+                |   thinking    thinking
+                |       |         |         |
+                |       +---------+---------+
+                |                 |
+                +--------+--------+
+                         |
+                         v
+                GPT-6.1 Sol - medium
+                 Integrate + verify
+                         |
+                         v
+                     Deliverable

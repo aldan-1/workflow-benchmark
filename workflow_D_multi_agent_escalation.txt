@@ -1,0 +1,41 @@
+Workflow D: Multi-agent workflow with escalation
+
+                         Task
+                          |
+                          v
+                 GPT-6.1 Sol - medium
+                  Understand + route
+                          |
+                          v
+                 Execute directly or
+                 delegate as in C
+                          |
+                          v
+                 GPT-6.1 Sol - medium
+                  Integrate + verify
+                          |
+                          v
+               Escalation trigger met?
+                 /              \
+               No                Yes
+                |                 |
+                |                 v
+                |        GPT-6.1 Sol - high
+                |         Diagnose + repair
+                |          + verify again
+                |                 |
+                |                 v
+                |          Still unresolved?
+                |            /         \
+                |          No           Yes
+                |           |            |
+                |           |            v
+                |           |   GPT-6.1 Sol - xhigh
+                |           |    Final repair attempt
+                |           |      + verification
+                |           |            |
+                +-----------+------------+
+                            |
+                            v
+                    Deliverable + status
+                 Success / failure / blocked
