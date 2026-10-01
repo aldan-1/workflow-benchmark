@@ -18,23 +18,10 @@ task completion enough to justify their execution cost and time.
 | D | C with Sol high/xhigh escalation | [D](../workflows/workflow_D_multi_agent_escalation.txt) |
 | E | Full GPT framework with Astra orchestration and bounded Sol 6.1 escalation | [E](../workflows/workflow_E_full_gpt.txt) |
 
-### Workflow E: experimental full GPT framework
+See [workflow operation](../workflows/workflow-operation.md) for each
+configuration's roles, execution sequence, handoffs, and escalation behavior.
 
-- GPT-6 Astra: main planner and orchestrator, selecting workers on demand.
-- GPT-6 Sol: light research and code scaffolding.
-- GPT-6 Luna at medium effort: execution by plan.
-- GPT-6 Luna at xhigh effort: data analysis.
-- GPT-6.1 Sol: integration and verification, starting at medium effort.
-
-Run dependent work sequentially: Luna must receive Sol's scaffold before executing
-when its task depends on that output. Define worker inputs, deliverables, and
-acceptance checks explicitly to make handoffs inspectable.
-
-When the escalation trigger is met, Sol 6.1 repairs and verifies at the next
-effort level: medium -> high -> xhigh -> max. Increase effort by one level after
-each failed repair and verification. Stop at success or the predefined attempt,
-time, or cost limit; exhaustion produces an explicit failed or blocked result.
-The exact triggers and limits remain to be specified before any run.
+## Comparison design
 
 Treat E as a complete-system comparison against A-D. It changes the planner,
 worker models, role allocation, and escalation policy simultaneously, so results
@@ -42,8 +29,8 @@ cannot attribute an improvement to any single change without controlled variants
 Include planning, handoffs, workers, and repair attempts in total cost and runtime.
 
 Verify provider model identifiers and supported effort levels before implementing
-E, including Luna medium and xhigh support. Its executor and analysis roles are hypotheses
-to evaluate using independent acceptance checks.
+any configuration. Evaluate E's Luna executor and analysis roles using independent
+acceptance checks.
 
 ## Decisions to discuss first
 
