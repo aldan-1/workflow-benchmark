@@ -16,6 +16,34 @@ task completion enough to justify their execution cost and time.
 | B | Single agent, Sol high | [B](../workflows/workflow_B_single_agent_high.txt) |
 | C | Sol medium with delegation on demand | [C](../workflows/workflow_C_multi_agent.txt) |
 | D | C with Sol high/xhigh escalation | [D](../workflows/workflow_D_multi_agent_escalation.txt) |
+| E | Full GPT framework with Astra orchestration and bounded Sol 6.1 escalation | [E](../workflows/workflow_E_full_gpt.txt) |
+
+### Workflow E: experimental full GPT framework
+
+- GPT-6 Astra: main planner and orchestrator, selecting workers on demand.
+- GPT-6 Sol: light research and code scaffolding.
+- GPT-6 Luna at medium effort: execution by plan.
+- GPT-6 Luna at xhigh effort: data analysis.
+- GPT-6.1 Sol: integration and verification, starting at medium effort.
+
+Run dependent work sequentially: Luna must receive Sol's scaffold before executing
+when its task depends on that output. Define worker inputs, deliverables, and
+acceptance checks explicitly to make handoffs inspectable.
+
+When the escalation trigger is met, Sol 6.1 repairs and verifies at the next
+effort level: medium -> high -> xhigh -> max. Increase effort by one level after
+each failed repair and verification. Stop at success or the predefined attempt,
+time, or cost limit; exhaustion produces an explicit failed or blocked result.
+The exact triggers and limits remain to be specified before any run.
+
+Treat E as a complete-system comparison against A-D. It changes the planner,
+worker models, role allocation, and escalation policy simultaneously, so results
+cannot attribute an improvement to any single change without controlled variants.
+Include planning, handoffs, workers, and repair attempts in total cost and runtime.
+
+Verify provider model identifiers and supported effort levels before implementing
+E, including Luna medium and xhigh support. Its executor and analysis roles are hypotheses
+to evaluate using independent acceptance checks.
 
 ## Decisions to discuss first
 
@@ -62,7 +90,7 @@ to redact and retain trajectories before collecting them.
 2. Verify Hermes integration capabilities and provider configuration support.
 3. Specify a small pilot task set and independent evaluators.
 4. Implement configuration A and the runner end to end.
-5. Add B, C, and D with consistent logging and limits.
+5. Add B, C, D, and experimental E with consistent logging and limits.
 6. Run the pilot, investigate evaluator and infrastructure defects, then freeze
    a comparison suite and execute repeated trials.
 7. Analyze results and decide whether to expand the suite or revise the workflow.

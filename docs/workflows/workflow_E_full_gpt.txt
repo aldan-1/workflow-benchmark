@@ -16,8 +16,9 @@ Model identifiers and supported reasoning efforts require verification.
              |                         |
              v                         v
          GPT-6 Sol                 GPT-6 Luna
-      Light research              Execute bounded
-       + scaffolding              plan / analysis
+      Light research              Execute by plan
+       + scaffolding                 medium
+             |                    Data analysis
              |                       xhigh
              +------------+------------+
                           |
