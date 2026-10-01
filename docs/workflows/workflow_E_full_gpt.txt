@@ -1,0 +1,52 @@
+Workflow E: Full GPT framework - experimental configuration
+
+Astra plans and routes on demand; select only needed workers.
+If Luna depends on Sol's scaffold, run those steps sequentially.
+Model identifiers and supported reasoning efforts require verification.
+
+                         Task
+                          |
+                          v
+                  GPT-6 Astra
+                  Plan + orchestrate
+                          |
+                 Select needed workers
+                          |
+             +------------+------------+
+             |                         |
+             v                         v
+         GPT-6 Sol                 GPT-6 Luna
+      Light research              Execute bounded
+       + scaffolding              plan / analysis
+             |                       xhigh
+             +------------+------------+
+                          |
+                          v
+                   GPT-6.1 Sol
+                Integrate + verify
+                       medium
+                          |
+                   Checks satisfied?
+                    /           \
+                  Yes            No
+                   |              |
+                   v              v
+                 Final      Repair + verify
+                            at next effort
+                                  |
+                         high -> xhigh -> max
+                                  |
+                         Stop at success or
+                         attempt/budget limit
+                                  |
+                                  v
+                        Deliverable + status
+                     Success / failure / blocked
+
+Escalation policy:
+- Increase effort by one level after each failed repair and verification.
+- Set attempt and total budget limits before running the workflow.
+- Exhaustion ends with an explicit failed or blocked result.
+
+The benchmark evaluator independently checks the final result outside the
+workflow; the agent's own verification does not determine the benchmark score.
